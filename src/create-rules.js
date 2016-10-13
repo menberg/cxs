@@ -110,7 +110,7 @@ const filterCommonDeclarations = (style) => {
 }
 
 const createRuleset = (selector, styles, parent) => {
-  const declarations = styles.map(s => s.prop + ':' + s.value)
+  const declarations = styles.map(s => s.prop.replace('_', '') + ':' + s.value)
   const ruleset = `${selector}{${declarations.join(';')}}`
   return parent ? `${parent} { ${ruleset} }` : ruleset
 }
