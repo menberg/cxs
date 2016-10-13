@@ -270,4 +270,3 @@ const tree = View(store)
 store.subscribe(update)
 
 document.body.appendChild(tree)
-
