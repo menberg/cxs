@@ -76,6 +76,10 @@ const createNestedRules = (name, style, parent) => {
         }]
       } else if (/^@/.test(key)) {
         return createRules(name, style[key], key)
+      } else if (/,/.test(key)) {
+        const keyTidy = key.replace(/ /g, '')
+        const selector = name ? name + ' ' + keyTidy.replace(/,/g, ',.' + name + ' ') : key
+        return createRules(selector, style[key], parent)
       } else {
         const selector = name ? `${name} ${key}` : key
         return createRules(selector, style[key], parent)
